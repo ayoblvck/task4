@@ -85,14 +85,12 @@ const markAnswer = (index) => {
             isCorrect = question.options[i].correct;
             if (isCorrect) {
                 const correctOption = options[i];
-                correctOption=
-                /*
                 correctOption.style.backgroundColor = 'green'
-                break;*/
+                break;
             }
         }
     }
-    
+
 
 
     /*
