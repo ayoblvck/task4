@@ -58,14 +58,12 @@ const render = (index) => {
     const options = document.querySelectorAll('.options')
     options.forEach((optionElement, i) => {
         optionElement.querySelector('span').textContent = question.options[i].title;
-        optionElement.style.backgroundColor = '';
+        optionElement.className = 'options'
         const inputElement = optionElement.querySelector('input');
 
         inputElement.checked = false;
         inputElement.onclick = () => {
             answers[index] = { option: i, answer: question.options[i].correct }
-            console.log(question.options[i].correct)
-            console.log(answers)
         }
     })
 }
@@ -73,37 +71,37 @@ const markAnswer = (index) => {
     const optionAnswer = answers[index];
     const options = document.querySelectorAll('.options');
     const selectedOption = options[optionAnswer.option];
-
-    console.log('selected Options', selectedOption);
     if (optionAnswer.answer) {
-        selectedOption.style.backgroundColor = 'green'
+        console.log(optionAnswer.answer);
+        selectedOption.classList.add('correctOption')
 
     } else {
-        selectedOption.style.backgroundColor = 'red';
+        selectedOption.classList.add('wrongOption')
         question = allQuestions[index];
         for (let i = 0; i < question.options.length; i++) {
             isCorrect = question.options[i].correct;
             if (isCorrect) {
                 const correctOption = options[i];
-                correctOption.style.backgroundColor = 'green'
+                correctOption.classList.add('correctOption')
                 break;
             }
         }
+        //setTimeout(()=>render(++currentIndex), 1000)
     }
 
 
 
     /*
-        const styles = {
-            width: '80%',
-            borderRadius: '8px'
-        };
-        const styles2 = {
-            width: '80%',
-            borderRadius: '8px'
-        };
-        Object.assign(selectedOption.style, styles)
-        Object.assign(correctOption.style, styles2)*/
+    const styles = {
+    width: '80%',
+    borderRadius: '8px'
+    };
+    const styles2 = {
+    width: '80%',
+    borderRadius: '8px'
+    };
+    Object.assign(selectedOption.style, styles)
+    Object.assign(correctOption.style, styles2)*/
 }
 
 const next = () => {
@@ -112,12 +110,12 @@ const next = () => {
             render(++currentIndex)
         })
     }
-    /* *
+    /*
     const previous = () => {
-        const previousButton = document.querySelector('#previous')
-        previousButton.addEventListener('click', () => {
-            render(--currentIndex)
-        })
+    const previousButton = document.querySelector('#previous')
+    previousButton.addEventListener('click', () => {
+    render(--currentIndex)
+    })
     }
     **/
 
