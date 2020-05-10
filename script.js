@@ -89,7 +89,7 @@ const markAnswer = (index) => {
         }
     }
 
-    setTimeout(() => render(++currentIndex), 2000)
+  
 
 
     /*
