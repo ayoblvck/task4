@@ -74,7 +74,8 @@ const markAnswer = (index) => {
     if (optionAnswer.answer) {
         console.log(optionAnswer.answer);
         selectedOption.classList.add('correctOption')
-
+        const score = document.querySelector('.score')
+        score.textContent = +score.textContent + 1
     } else {
         selectedOption.classList.add('wrongOption')
         question = allQuestions[index];
@@ -86,9 +87,9 @@ const markAnswer = (index) => {
                 break;
             }
         }
-        //setTimeout(()=>render(++currentIndex), 1000)
     }
 
+    setTimeout(() => render(++currentIndex), 2000)
 
 
     /*
@@ -105,19 +106,12 @@ const markAnswer = (index) => {
 }
 
 const next = () => {
-        const nextButton = document.querySelector('#next')
-        nextButton.addEventListener('click', () => {
-            render(++currentIndex)
-        })
-    }
-    /*
-    const previous = () => {
-    const previousButton = document.querySelector('#previous')
-    previousButton.addEventListener('click', () => {
-    render(--currentIndex)
+    const nextButton = document.querySelector('#next')
+    nextButton.addEventListener('click', () => {
+        render(++currentIndex)
     })
-    }
-    **/
+}
+
 
 const enter = () => {
     const input = document.querySelector('#enter')
