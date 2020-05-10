@@ -90,7 +90,7 @@ const markAnswer = (index) => {
     }
 
   
-
+         setTimeout(() => render(++currentIndex), 1500)
 
     /*
     const styles = {
